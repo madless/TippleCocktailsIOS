@@ -22,6 +22,7 @@
 		657355BE2038C54300BEFEC9 /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657355BD2038C54300BEFEC9 /* DrinkCell.swift */; };
 		657355C02038E44A00BEFEC9 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657355BF2038E44A00BEFEC9 /* NetworkHelper.swift */; };
 		657355C22038F37C00BEFEC9 /* DrinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657355C12038F37C00BEFEC9 /* DrinkViewController.swift */; };
+		657355C4203986A200BEFEC9 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657355C3203986A200BEFEC9 /* Ingredient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		657355BD2038C54300BEFEC9 /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
 		657355BF2038E44A00BEFEC9 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		657355C12038F37C00BEFEC9 /* DrinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkViewController.swift; sourceTree = "<group>"; };
+		657355C3203986A200BEFEC9 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				657355B52038353600BEFEC9 /* Drink.swift */,
+				657355C3203986A200BEFEC9 /* Ingredient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6551A12320364A9700321F45 /* SearchResponse.swift in Sources */,
+				657355C4203986A200BEFEC9 /* Ingredient.swift in Sources */,
 				657355B62038353600BEFEC9 /* Drink.swift in Sources */,
 				657355BE2038C54300BEFEC9 /* DrinkCell.swift in Sources */,
 				657355C02038E44A00BEFEC9 /* NetworkHelper.swift in Sources */,

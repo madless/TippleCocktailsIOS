@@ -13,9 +13,11 @@ class ApiService: NSObject {
     static let sharedInstance = ApiService()
     static let searchEndpoint = "search.php"
     static let filterEndpoint = "filter.php"
+    static let lookupEndpoint = "lookup.php"
     
     static let ALCOHOL_TYPE_KEY = "a"
     static let SEARCH_KEY = "s"
+    static let ID_KEY = "i"
     
     func prepareUrl(baseUrl: String, endpoint: String, params: String) -> String {
         var url = "\(baseUrl)\(endpoint)\(params)"
@@ -65,6 +67,30 @@ class ApiService: NSObject {
             do {
                 let searchResponse = try decoder.decode(SearchResponse.self, from: data)
                 onSuccess(searchResponse)
+            } catch let error {
+                onFailure(error)
+            }
+        }, onFailure: {
+            error in
+            onFailure(error)
+        })
+    }
+    
+    func getDrinkById(id: String,
+                      onSuccess: @escaping(DrinkResponse) -> Void,
+                      onFailure: @escaping(Error?) -> Void) {
+        let params = prepareParams(params: [ApiService.ID_KEY: id])
+        let url = prepareUrl(baseUrl: baseURL, endpoint: ApiService.lookupEndpoint, params: params)
+        doRequest(url: url, onSuccess: {
+            data in
+            let decoder = JSONDecoder()
+            do {
+                let searchResponse = try decoder.decode(SearchResponse.self, from: data)
+                if let drinkResponse = searchResponse.drinks?[0] {
+                    onSuccess(drinkResponse)
+                } else {
+                    onFailure(nil)
+                }
             } catch let error {
                 onFailure(error)
             }

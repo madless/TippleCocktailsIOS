@@ -9,6 +9,13 @@
 import Foundation
 
 struct Drink {
+    let id: String?
     let name: String?
+    let category: String?
+    let iba: String?
+    let alcoholic: String?
+    let glass: String?
+    let instructions: String?
     let drinkThumbUrl: String?
+    let ingredients: Array<Ingredient>?
 }

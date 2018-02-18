@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlcoholTypeViewController: UIViewController, UITableViewDataSource {
+class AlcoholTypeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let DRINK_CELL = "DrinkCell"
     
@@ -22,6 +22,7 @@ class AlcoholTypeViewController: UIViewController, UITableViewDataSource {
 
         // Do any additional setup after loading the view.
         
+        self.tableView.delegate = self
         self.tableView.dataSource = self
     }
     
@@ -29,13 +30,11 @@ class AlcoholTypeViewController: UIViewController, UITableViewDataSource {
         super.viewWillAppear(animated)
         self.alcoholType = parent?.restorationIdentifier
         self.navigationItem.title = parent?.restorationIdentifier
-        print("alcoholType: ", alcoholType)
         
         fetchDrinksFromServer()
     }
 
     func fetchDrinksFromServer() {
-        print("fetchDrinksFromServer alcoholType: ", alcoholType)
         if let alcoholType = self.alcoholType {
             print("Start fetching ", alcoholType, "...")
             ApiService.sharedInstance.getDrinksByAlcohol(alcoholType: alcoholType, onSuccess: {
@@ -66,5 +65,17 @@ class AlcoholTypeViewController: UIViewController, UITableViewDataSource {
             NetworkHelper.downloadImage(urlStr: urlStr, imageView: cell.drinkImageView)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let drink = drinks[indexPath.row]
+        let segueId = "OpenDrink"
+        performSegue(withIdentifier: segueId, sender: drink)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let drink = sender as! Drink
+        let drinkViewContoller = segue.destination as! DrinkViewController
+        drinkViewContoller.drinkId = drink.id
     }
 }
